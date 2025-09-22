@@ -1,14 +1,11 @@
-# Another Tech Doc
-
-This is another example Tech Doc
+# Mermaid Diagram Example
 
 ## Context
 
-Example of a Tech Doc in Backstage
+This is an example of a Mermaid diagram that can be included in documentation to illustrate a sequence of interactions between components in a system.
 
 ```mermaid
 sequenceDiagram
-Alice->>John: Hello John, how are you?
-John-->>Alice: Great!
-Alice-)John: See you later!
+HMCTS Application->>Gov Notify: Send an email
+Gov Notify-->>HMCTS Application-: Email sent successfully!
 ```
