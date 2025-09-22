@@ -100,7 +100,7 @@ To make use of Mermaid diagrams in your Tech Docs markdown files, you will need 
 
 ```yaml
 markdown_extensions:
-- markdown_inline_mermaid
+  - markdown_inline_mermaid
 ```
 
 you can then add Mermaid diagrams to your markdown files using the following syntax:
@@ -117,6 +117,8 @@ graph TD;
 This will render the diagram in your Tech Docs page.
 
 See the syntax in example-tech-doc.md [here](https://github.com/backstage/community-plugins/tree/main/workspaces/adr/plugins/adr) which displays like this in the Backstage UI:
+
+<img width="1422" height="888" alt="Screenshot 2025-09-22 at 11 29 04" src="https://github.com/user-attachments/assets/2582a102-447f-46ed-b01a-c6b5929b4563" />
 
 ## Architectural Decision Records (ADRs)
 
