@@ -68,6 +68,56 @@ spec:
 
 If you have multiple API's to register, simply add another section starting with `---` and change the `metadata.name` and `spec.definition.$text` values accordingly.
 
+## Tech Docs
+To make use of the Backstage Tech Docs feature for your project, ensure the catalog-info.yaml for your project file contains the following annotation:
+
+```yaml
+metadata:
+  annotations:
+    --- exisitng config ---
+    backstage.io/techdocs-ref: dir:.
+    ---
+```
+
+and then in the root of your project create a directory called `docs` and add your markdown files there. Create an mkdocs.yaml in the root of your repository and add the following:
+
+```yaml
+site_name: 'Backstage HMCTS Examples'
+
+nav:
+  - Index page: index.md
+  - Another section:
+      - Another subpage: techdocs/example-tech-doc.md
+plugins:
+  - techdocs-core
+```
+
+Once merged, your docs should appear in Backstage when it next syncs the catalog.
+
+### Mermaid Diagrams in Tech Docs
+
+To make use of Mermaid diagrams in your Tech Docs markdown files, you will need to add the `markdown_inline_mermaid` extension to your mkdocs.yaml file as follows:
+
+```yaml
+markdown_extensions:
+- markdown_inline_mermaid
+```
+
+you can then add Mermaid diagrams to your markdown files using the following syntax:
+
+````markdown
+```mermaid
+graph TD;
+    A->>B;
+    A->>C;
+    C-->A;
+```
+````
+
+This will render the diagram in your Tech Docs page.
+
+See the syntax in example-tech-doc.md [here](https://github.com/backstage/community-plugins/tree/main/workspaces/adr/plugins/adr) which displays like this in the Backstage UI:
+
 ## Architectural Decision Records (ADRs)
 
 An ADR is a document that captures an important architectural decision made along with its context and consequences. This project contains an example of how to create and manage ADR's within Backstage.
