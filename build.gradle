@@ -177,7 +177,7 @@ dependencies {
   implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4JVersion
   implementation group: 'org.apache.logging.log4j', name: 'log4j-to-slf4j', version: log4JVersion
   implementation group: 'io.rest-assured', name: 'rest-assured', version: '3.3.0'
-  implementation 'junit:junit:4.13.1'
+  implementation 'junit:junit:4.13.2'
   implementation(group: 'org.springframework.boot', name: 'spring-boot-starter-test') {
     exclude(module: 'commons-logging')
   }
