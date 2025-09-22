@@ -3,7 +3,7 @@ site_name: 'Backstage HMCTS Examples'
 nav:
   - Index page: index.md
   - Another section:
-      - Another subpage: techdocs/example-tech-doc.md
+      - Another subpage: techdocs/example-tech-doc-mermaid.md
 plugins:
   - techdocs-core
 
