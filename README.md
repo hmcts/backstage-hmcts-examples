@@ -105,18 +105,15 @@ markdown_extensions:
 
 you can then add Mermaid diagrams to your markdown files using the following syntax:
 
-````markdown
+````yaml
 ```mermaid
-graph TD;
-    A->>B;
-    A->>C;
-    C-->A;
+sequenceDiagram
+HMCTS Application->>Gov Notify: Send an email
+Gov Notify-->>HMCTS Application: Email sent successfully!
 ```
 ````
 
-This will render the diagram in your Tech Docs page.
-
-See the syntax in example-tech-doc.md [here](https://github.com/backstage/community-plugins/tree/main/workspaces/adr/plugins/adr) which displays like this in the Backstage UI:
+This will render the diagram like this in the Tech Docs section of Backstage:
 
 <img width="1422" height="888" alt="Screenshot 2025-09-22 at 11 29 04" src="https://github.com/user-attachments/assets/2582a102-447f-46ed-b01a-c6b5929b4563" />
 
