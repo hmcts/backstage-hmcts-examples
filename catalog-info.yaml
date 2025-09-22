@@ -9,6 +9,7 @@ metadata:
     github.com/project-slug: 'hmcts/backstage-hmcts-examples'
     backstage.io/techdocs-ref: dir:.
     backstage.io/adr-location: docs/adrs
+    backstage.io/spectral-ruleset-url: "https://raw.githubusercontent.com/baloise-incubator/spectral-ruleset/main/zalando.yml"
   tags:
     - java
   links:
