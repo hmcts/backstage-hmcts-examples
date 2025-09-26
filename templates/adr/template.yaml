@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: adr
-  title: Create HMCTS ADR 5
+  title: Create HMCTS ADR 6
   description: Generate a HMCTS Architecture Decision Record and commit it to a repo
 spec:
   owner: centre-of-excellence
@@ -79,4 +79,4 @@ spec:
       input:
         description: "Add ADR: ${{ parameters.adrTitle }}"
         repoUrl: ${{ parameters.repoUrl }}
-        defaultBranch: 'test-branch'
+        defaultBranch: test-branch
