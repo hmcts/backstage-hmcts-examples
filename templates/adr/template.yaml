@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: adr
-  title: Create HMCTS ADR 2
+  title: Create HMCTS ADR 3
   description: Generate a HMCTS Architecture Decision Record and commit it to a repo
 spec:
   owner: centre-of-excellence
@@ -79,6 +79,5 @@ spec:
         repoUrl: ${{ parameters.repoUrl }}
         #fix this as won't work if spaces
         branchName: 'new-adr-${{ parameters.adrTitle }}'
-        defaultBranch: 'master'
         title: "Add ADR: ${{ parameters.adrTitle }}"
         description: "This PR adds a new ADR created via the Backstage template."
