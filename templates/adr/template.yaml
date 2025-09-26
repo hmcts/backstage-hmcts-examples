@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: adr
-  title: Create HMCTS ADR 1
+  title: Create HMCTS ADR 2
   description: Generate a HMCTS Architecture Decision Record and commit it to a repo
 spec:
   owner: centre-of-excellence
@@ -71,15 +71,6 @@ spec:
           context: ${{ parameters.context }}
           decision: ${{ parameters.decision }}
           consequences: ${{ parameters.consequences }}
-
-    # This step publishes the contents of the working directory to GitHub.
-    - id: publish
-      name: Publish to GitHub
-      action: publish:github
-      input:
-        description: "Add ADR: ${{ parameters.adrTitle }}"
-        repoUrl: ${{ parameters.repoUrl }}
-        defaultBranch: test-branch
 
     - id: publish
       name: Publish to Existing GitHub Repo
