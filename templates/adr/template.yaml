@@ -1,0 +1,81 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: adr
+  title: Create HMCTS ADR
+  description: Generate a HMCTS Architecture Decision Record and commit it to a repo
+spec:
+  owner: center-of-excellence
+  type: adr
+  parameters:
+    - title: Fill in ADR details
+      required:
+            - adrTitle
+            - status
+            - context
+            - decision
+            - consequences
+      properties:
+        adrTitle:
+          type: string
+          title: ADR Title
+          ui:autofocus: true
+        status:
+          type: string
+          title: Status
+          enum:
+            - proposed
+            - accepted
+            - deprecated
+        context:
+          type: string
+          title: Context / Background
+          ui:options:
+            rows: 5
+        decision:
+          type: string
+          title: Decision
+          ui:options:
+            rows: 5
+        consequences:
+          type: string
+          title: Consequences
+          ui:options:
+            rows: 5
+
+    - title: Choose a location
+      required:
+        - repoUrl
+      properties:
+        repoUrl:
+          title: Repository Location
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
+        branch-name:
+          type: string
+          title: New github branch name
+  steps:
+    - id: fetch-adr
+      name: Fetch ADR skeleton3
+      action: fetch:template
+      input:
+        url: .
+        targetPath: ./adr
+        values:
+          adrTitle: ${{ parameters.adrTitle }}
+          status: ${{ parameters.status }}
+          context: ${{ parameters.context }}
+          decision: ${{ parameters.decision }}
+          consequences: ${{ parameters.consequences }}
+
+    # This step publishes the contents of the working directory to GitHub.
+    - id: publish
+      name: Publish
+      action: publish:github
+      input:
+        description: This is ${{ parameters.name }}
+        repoUrl: ${{ parameters.repoUrl }}
+        defaultBranch: ${{ parameters.branch-name }}
