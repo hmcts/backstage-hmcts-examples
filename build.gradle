@@ -182,7 +182,7 @@ dependencies {
     exclude(module: 'commons-logging')
   }
 
-  testImplementation(platform('org.junit:junit-bom:5.8.2'))
+  testImplementation(platform('org.junit:junit-bom:5.13.4'))
   testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', {
     exclude group: 'junit', module: 'junit'
     exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
