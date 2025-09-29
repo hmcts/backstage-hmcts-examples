@@ -99,7 +99,7 @@ spec:
       action: fetch:template
       input:
         url: ./skeleton
-        targetPath: ./docs/adr/{{ parameters.adrTitle | replace(" ", "_") | lower }}.md
+        targetPath: ./docs/adr
         values:
           adrTitle: ${{ parameters.adrTitle }}
           date: ${{ parameters.date }}
@@ -112,6 +112,14 @@ spec:
           consAndRisks: ${{ parameters.consAndRisks }}
           alternativesConsidered: ${{ parameters.alternativesConsidered }}
           furtherConsiderations: ${{ parameters.furtherConsiderations }}
+
+    - id: rename-adr
+      name: Rename ADR file
+      action: fs:rename
+      input:
+        from: ./adr/adr_template.md
+        to: ./adr/{{ parameters.adrTitle | replace(" ", "_") | lower }}.md
+
     - id: publish
       name: Publish ADR via GitHub
       action: publish:github:pull-request
