@@ -117,8 +117,9 @@ spec:
       name: Rename ADR file
       action: fs:rename
       input:
-        from: ./adr/adr_template.md
-        to: ./adr/{{ parameters.adrTitle | replace(" ", "_") | lower }}.md
+        files:
+          - from: ./docs/adr/adr_template.md
+            to: ./docs/adr/{{ parameters.adrTitle | replace(" ", "_") | lower }}.md
 
     - id: publish
       name: Publish ADR via GitHub
