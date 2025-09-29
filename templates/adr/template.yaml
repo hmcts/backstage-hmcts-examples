@@ -123,13 +123,13 @@ spec:
       input:
         files:
           - from: ./docs/adrs/adr_template.md
-            to: './docs/adrs/${{ parameters.adrNumber }}-${{ parameters.adrTitle | replace(" ", "_") | lower}}.md'
+            to: './docs/adrs/${{ parameters.adrNumber }}-${{ parameters.adrTitle | replace(" ", "-") | lower}}.md'
 
     - id: publish
       name: Publish ADR via GitHub
       action: publish:github:pull-request
       input:
         repoUrl: ${{ parameters.repoUrl }}
-        branchName: 'adr-${{ parameters.adrTitle }}'
+        branchName: 'adr-${{ parameters.adrTitle | replace(" ", "_")  | lower'
         title: 'Add ADR: ${{ parameters.adrTitle }}'
         description: 'This PR adds a new ADR created via the Backstage template.'
