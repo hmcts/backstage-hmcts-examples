@@ -1,12 +1,12 @@
-# ADR: {{ values.adrTitle }}
+# ADR: ${{ values.adrTitle }}
 
-Date: {{ values.date }}
-Status: {{ values.status }}
+Date: ${{ values.date }}
+Status: ${{ values.status }}
 Context:
-{{ values.context }}
+${{ values.context }}
 
 Decision:
-{{ values.decision }}
+${{ values.decision }}
 
 Consequences:
-{{ values.consequences }}
+${{ values.consequences }}
