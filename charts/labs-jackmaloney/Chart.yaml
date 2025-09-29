@@ -3,10 +3,10 @@ appVersion: "1.0"
 description: A Helm chart for jack-lab-test2-jackmaloney App
 name: labs-jackmaloney
 home: https://github.com/hmcts/jack-lab-test2-jackmaloney
-version: 0.0.2
+version: 0.0.3
 maintainers:
   - name: HMCTS jack-lab-test2 team
 dependencies:
   - name: java
-    version: 3.7.3
+    version: 5.2.1
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
