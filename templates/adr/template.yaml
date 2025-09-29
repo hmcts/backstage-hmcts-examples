@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: adr
-  title: Create HMCTS ADR 1
+  title: Create HMCTS ADR 2
   description: Generate a HMCTS Architecture Decision Record and commit it to a repo
 spec:
   owner: centre-of-excellence
@@ -115,10 +115,11 @@ spec:
 
     - id: rename-adr
       name: Rename ADR file
-      action: fs:move
+      action: fs:rename
       input:
-        from: ./docs/adr/adr_template.md
-        to: ./docs/adr/{{ parameters.adrTitle | replace(" ", "_") | lower }}.md
+        files:
+          - from: ./docs/adr/adr_template.md
+            to: ./docs/adr/{{ parameters.adrTitle }}.md
 
     - id: publish
       name: Publish ADR via GitHub
