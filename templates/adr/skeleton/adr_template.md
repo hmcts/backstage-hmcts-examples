@@ -6,7 +6,7 @@ Context:
 {{ parameters.context }}
 
 Decision:
-{{ parameters.decision }}
+{{ values.decision }}
 
 Consequences:
 {{ values.consequences }}

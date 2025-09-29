@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: adr
-  title: Create HMCTS ADR 3
+  title: Create HMCTS ADR 4
   description: Generate a HMCTS Architecture Decision Record and commit it to a repo
 spec:
   owner: centre-of-excellence
@@ -55,9 +55,9 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
-        branchName:
-          type: string
-          title: New github branch name
+            allowedOwners:
+              - hmcts
+              - hmcts-test
   steps:
     - id: fetch-adr
       name: Fetch ADR skeleton
@@ -77,7 +77,6 @@ spec:
       action: publish:github:pull-request
       input:
         repoUrl: ${{ parameters.repoUrl }}
-        #fix this as won't work if spaces
         branchName: 'new-adr-${{ parameters.adrTitle }}'
         title: "Add ADR: ${{ parameters.adrTitle }}"
         description: "This PR adds a new ADR created via the Backstage template."
