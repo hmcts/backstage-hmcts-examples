@@ -1,9 +1,9 @@
 # ADR: {{ values.adrTitle }}
 
-Date: {{ parameters.date }}
-Status: {{ parameters.status }}
+Date: {{ values.date }}
+Status: {{ values.status }}
 Context:
-{{ parameters.context }}
+{{ values.context }}
 
 Decision:
 {{ values.decision }}

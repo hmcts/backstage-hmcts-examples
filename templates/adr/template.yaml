@@ -10,11 +10,11 @@ spec:
   parameters:
     - title: Fill in ADR details
       required:
-            - adrTitle
-            - status
-            - context
-            - decision
-            - consequences
+        - adrTitle
+        - status
+        - context
+        - decision
+        - consequences
       properties:
         adrTitle:
           type: string
@@ -30,20 +30,23 @@ spec:
         context:
           type: string
           title: Context / Background
-          ui:options:
-            rows: 5
+          ui:
+            options:
+              rows: 5
         decision:
           type: string
           title: Decision
-          ui:options:
-            rows: 5
+          ui:
+            options:
+              rows: 5
         consequences:
           type: string
           title: Consequences
-          ui:options:
-            rows: 5
+          ui:
+            options:
+              rows: 5
 
-    - title: Choose a location
+    - title: Repository location
       required:
         - repoUrl
       properties:
@@ -58,6 +61,18 @@ spec:
               - hmcts
               - hmcts-test
   steps:
+    - id: debug-parameters
+      name: Log Parameters
+      action: debug:log
+      input:
+        message: |
+          adrTitle: ${{ parameters.adrTitle }}
+          status: ${{ parameters.status }}
+          context: ${{ parameters.context }}
+          decision: ${{ parameters.decision }}
+          consequences: ${{ parameters.consequences }}
+          repoUrl: ${{ parameters.repoUrl }}
+
     - id: fetch-adr
       name: Fetch ADR skeleton
       action: fetch:template
@@ -70,12 +85,14 @@ spec:
           context: ${{ parameters.context }}
           decision: ${{ parameters.decision }}
           consequences: ${{ parameters.consequences }}
+          # optionally add a date
+          date: ${{ parameters.date | default("") }}
 
     - id: publish
-      name: Publish to Existing GitHub Repo
+      name: Publish ADR via GitHub
       action: publish:github:pull-request
       input:
         repoUrl: ${{ parameters.repoUrl }}
-        branchName: 'new-adr-${{ parameters.adrTitle }}'
-        title: "Add ADR: ${{ parameters.adrTitle }}"
-        description: "This PR adds a new ADR created via the Backstage template."
+        branchName: 'adr-${{ parameters.adrTitle }}'
+        title: 'Add ADR: ${{ parameters.adrTitle }}'
+        description: 'This PR adds a new ADR created via the Backstage template.'
