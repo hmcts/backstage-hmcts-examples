@@ -99,7 +99,7 @@ spec:
       action: fetch:template
       input:
         url: ./skeleton
-        targetPath: ./docs/adr
+        targetPath: ./docs/adrs
         values:
           adrTitle: ${{ parameters.adrTitle }}
           date: ${{ parameters.date }}
