@@ -2,8 +2,8 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: adr
-  title: Create HMCTS ADR
-  description: Generate a HMCTS Architecture Decision Record and commit it to a repo
+  title: Create an Architectural Decision Record (ADR)
+  description: Generate a HMCTS Architecture Decision Record and commit it to a repository
 spec:
   owner: centre-of-excellence
   type: adr
