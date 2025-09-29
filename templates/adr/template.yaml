@@ -118,8 +118,8 @@ spec:
       action: fs:rename
       input:
         files:
-          - from: ./docs/adr/adr_template.md
-            to: ./docs/adr/{{ parameters.adrTitle }}.md
+          - from: ./docs/adrs/adr_template.md
+            to: './docs/adrs/{{ parameters.adrTitle }}.md'
 
     - id: publish
       name: Publish ADR via GitHub
