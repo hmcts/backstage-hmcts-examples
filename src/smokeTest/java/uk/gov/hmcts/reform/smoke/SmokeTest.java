@@ -1,39 +1,37 @@
 package uk.gov.hmcts.reform.smoke;
 
 import io.restassured.RestAssured;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import static io.restassured.RestAssured.given;
-import static junit.framework.TestCase.assertFalse;
-import static org.hamcrest.Matchers.equalTo;
-import static org.springframework.http.HttpHeaders.CONTENT_TYPE;
 
-@RunWith(SpringRunner.class)
-public class SmokeTest {
-    @Value("${TEST_URL:http://localhost:8080}")
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+class SmokeTest {
+    @Value("${TEST_URL:http://localhost:4550}")
     private String testUrl;
 
-    @Before
+    @BeforeEach
     public void setUp() {
-        RestAssured.baseURI = testUrl;
+        RestAssured.useRelaxedHTTPSValidation();
     }
 
     @Test
-    public void healthCheck() {
-        given()
-            .relaxedHTTPSValidation()
-            .header(CONTENT_TYPE, "application/json")
+    void smokeTest() {
+        Response response = given()
+            .baseUri(testUrl)
+            .contentType(ContentType.JSON)
             .when()
-            .get("/health")
+            .get()
             .then()
-            .statusCode(200)
-            .body(
-                "status",
-                equalTo("UP"));
-        assertFalse("passed",testUrl.isEmpty());
+            .extract().response();
+
+        Assertions.assertEquals(200, response.statusCode());
+        Assertions.assertTrue(response.asString().startsWith("Welcome"));
     }
 }
