@@ -123,7 +123,7 @@ spec:
       input:
         files:
           - from: ./docs/adrs/adr_template.md
-            to: './docs/adrs/${{ parameters.adrNumber }}.md'
+            to: './docs/adrs/${{ parameters.adrNumber }}${{ parameters.title | replace(" ", "_") | lower}}.md'
 
     - id: publish
       name: Publish ADR via GitHub
