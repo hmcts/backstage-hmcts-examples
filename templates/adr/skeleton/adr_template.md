@@ -1,4 +1,4 @@
-# ADR: {{ parameters.title }}
+# ADR: {{ values.adrTitle }}
 
 Date: {{ parameters.date }}
 Status: {{ parameters.status }}
@@ -9,4 +9,4 @@ Decision:
 {{ parameters.decision }}
 
 Consequences:
-{{ parameters.consequences }}
+{{ values.consequences }}

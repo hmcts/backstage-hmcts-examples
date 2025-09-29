@@ -63,7 +63,7 @@ spec:
       name: Fetch ADR skeleton
       action: fetch:template
       input:
-        url: .
+        url: ./skeleton
         targetPath: ./adr
         values:
           adrTitle: ${{ parameters.adrTitle }}
