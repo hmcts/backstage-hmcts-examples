@@ -1,0 +1,83 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: adr
+  title: Create HMCTS ADR 3
+  description: Generate a HMCTS Architecture Decision Record and commit it to a repo
+spec:
+  owner: centre-of-excellence
+  type: adr
+  parameters:
+    - title: Fill in ADR details
+      required:
+            - adrTitle
+            - status
+            - context
+            - decision
+            - consequences
+      properties:
+        adrTitle:
+          type: string
+          title: ADR Title
+          ui:autofocus: true
+        status:
+          type: string
+          title: Status
+          enum:
+            - proposed
+            - accepted
+            - deprecated
+        context:
+          type: string
+          title: Context / Background
+          ui:options:
+            rows: 5
+        decision:
+          type: string
+          title: Decision
+          ui:options:
+            rows: 5
+        consequences:
+          type: string
+          title: Consequences
+          ui:options:
+            rows: 5
+
+    - title: Choose a location
+      required:
+        - repoUrl
+        - branchName
+      properties:
+        repoUrl:
+          title: Repository Location
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
+        branchName:
+          type: string
+          title: New github branch name
+  steps:
+    - id: fetch-adr
+      name: Fetch ADR skeleton
+      action: fetch:template
+      input:
+        url: .
+        targetPath: ./adr
+        values:
+          adrTitle: 
+          status: 
+          context: 
+          decision: 
+          consequences: 
+
+    - id: publish
+      name: Publish to Existing GitHub Repo
+      action: publish:github:pull-request
+      input:
+        repoUrl: 
+        #fix this as won't work if spaces
+        branchName: 'new-adr-'
+        title: "Add ADR: "
+        description: "This PR adds a new ADR created via the Backstage template."
