@@ -29,6 +29,10 @@ spec:
         date:
           type: string
           title: Date
+          ui:widget: date
+          ui:options:
+            format: 'dd-MM-yyyy'
+            ui:help: 'Select the date the decision for the ADR was made'
         deciders:
           type: string
           title: Deciders
@@ -45,6 +49,7 @@ spec:
         context:
           type: string
           title: Context / Background
+          ui:widget: textarea
           ui:
             options:
               rows: 5
