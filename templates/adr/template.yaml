@@ -130,6 +130,6 @@ spec:
       action: publish:github:pull-request
       input:
         repoUrl: ${{ parameters.repoUrl }}
-        branchName: 'adr-${{ parameters.adrTitle | replace(" ", "_")  | lower'
+        branchName: 'adr-${{ parameters.adrTitle | replace(" ", "_")  | lower }}'
         title: 'Add ADR: ${{ parameters.adrTitle }}'
         description: 'This PR adds a new ADR created via the Backstage template.'
