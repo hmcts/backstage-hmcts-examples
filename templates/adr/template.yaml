@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: adr
-  title: Create HMCTS ADR 6
+  title: Create HMCTS ADR
   description: Generate a HMCTS Architecture Decision Record and commit it to a repo
 spec:
   owner: centre-of-excellence
@@ -11,15 +11,30 @@ spec:
     - title: Fill in ADR details
       required:
         - adrTitle
+        - date
+        - deciders
+        - technicalStory
         - status
         - context
         - decision
-        - consequences
+        - pros
+        - consAndRisks
+        - alternativesConsidered
+        - furtherConsiderations
       properties:
         adrTitle:
           type: string
           title: ADR Title
           ui:autofocus: true
+        date:
+          type: string
+          title: Date
+        deciders:
+          type: string
+          title: Deciders
+        technicalStory:
+          type: string
+          title: Technical Story / JIRA reference
         status:
           type: string
           title: Status
@@ -39,9 +54,27 @@ spec:
           ui:
             options:
               rows: 5
-        consequences:
+        pros:
           type: string
-          title: Consequences
+          title: Pros
+          ui:
+            options:
+              rows: 5
+        consAndRisks:
+          type: string
+          title: Cons and Risks
+          ui:
+            options:
+              rows: 5
+        alternativesConsidered:
+          type: string
+          title: Alternatives Considered
+          ui:
+            options:
+              rows: 5
+        furtherConsiderations:
+          type: string
+          title: Further Considerations
           ui:
             options:
               rows: 5
@@ -61,18 +94,6 @@ spec:
               - hmcts
               - hmcts-test
   steps:
-    - id: debug-parameters
-      name: Log Parameters
-      action: debug:log
-      input:
-        message: |
-          adrTitle: ${{ parameters.adrTitle }}
-          status: ${{ parameters.status }}
-          context: ${{ parameters.context }}
-          decision: ${{ parameters.decision }}
-          consequences: ${{ parameters.consequences }}
-          repoUrl: ${{ parameters.repoUrl }}
-
     - id: fetch-adr
       name: Fetch ADR skeleton
       action: fetch:template
@@ -81,13 +102,16 @@ spec:
         targetPath: ./adr
         values:
           adrTitle: ${{ parameters.adrTitle }}
+          date: ${{ parameters.date }}
+          deciders: ${{ parameters.deciders }}
+          technicalStory: ${{ parameters.technicalStory }}
           status: ${{ parameters.status }}
           context: ${{ parameters.context }}
           decision: ${{ parameters.decision }}
-          consequences: ${{ parameters.consequences }}
-          # optionally add a date
-          date: ${{ parameters.date | default("") }}
-
+          pros: ${{ parameters.pros }}
+          consAndRisks: ${{ parameters.consAndRisks }}
+          alternativesConsidered: ${{ parameters.alternativesConsidered }}
+          furtherConsiderations: ${{ parameters.furtherConsiderations }}
     - id: publish
       name: Publish ADR via GitHub
       action: publish:github:pull-request

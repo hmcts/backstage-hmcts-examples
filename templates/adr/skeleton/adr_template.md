@@ -1,12 +1,35 @@
-# ADR: ${{ values.adrTitle }}
-
+---
+Title: ${{ values.adrTitle }}
 Date: ${{ values.date }}
-Status: ${{ values.status }}
-Context:
+Deciders: ${{ values.deciders }}
+Technical Story: ${{ values.technicalStory }}
+---
+
+## Status:
+${{ values.status }}
+
+## Context:
 ${{ values.context }}
 
-Decision:
+## Decision:
 ${{ values.decision }}
 
-Consequences:
-${{ values.consequences }}
+---
+
+## Consequences:
+
+### Pros:
+${{ values.pros }}
+
+### Cons / Risks:
+${{ values.consAndRisks }}
+
+---
+
+## Alternatives Considered:
+${{ values.alternativesConsidered }}
+
+---
+
+## Further Considerations:
+${{ values.furtherConsiderations }}
