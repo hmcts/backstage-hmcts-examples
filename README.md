@@ -100,6 +100,8 @@ plugins:
 
 Once merged, your docs should appear in Backstage when it next syncs the catalog.
 
+<img width="1029" height="513" alt="Screenshot 2025-09-30 at 09 49 32" src="https://github.com/user-attachments/assets/1a83b395-a591-4288-8d42-3e1554376d59" />
+
 ### Mermaid Diagrams in Tech Docs
 
 To make use of Mermaid diagrams in your Tech Docs markdown files, you will need to add the `markdown_inline_mermaid` extension to your mkdocs.yaml file as follows:
