@@ -72,6 +72,8 @@ If you have multiple API's to register, simply add another section starting with
 
 To ensure HMCTS API's conform to the agreed linting rules, the Spectral plugin has been added to HMCTS Backstage. To use, simply go to your API in Backstage and navigate to the Linter tab. If your API does not conform to the rules, you will see a list of issues that need to be resolved.
 
+<img width="953" height="730" alt="Screenshot 2025-09-30 at 09 47 42" src="https://github.com/user-attachments/assets/4c249f3f-16e4-4f25-aa89-909813f77a23" />
+
 ## Tech Docs
 To make use of the Backstage Tech Docs feature for your project, ensure the catalog-info.yaml for your project file contains the following annotation:
 
