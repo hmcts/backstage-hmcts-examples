@@ -68,6 +68,10 @@ spec:
 
 If you have multiple API's to register, simply add another section starting with `---` and change the `metadata.name` and `spec.definition.$text` values accordingly.
 
+### API Linter
+
+To ensure HMCTS API's conform to the agreed linting rules, the Spectral plugin has been added to HMCTS Backstage. To use, simply go to your API in Backstage and navigate to the Linter tab. If your API does not conform to the rules, you will see a list of issues that need to be resolved.
+
 ## Tech Docs
 To make use of the Backstage Tech Docs feature for your project, ensure the catalog-info.yaml for your project file contains the following annotation:
 
@@ -137,6 +141,12 @@ For an example of how to structure a HMCTS ADR, please see this [template](https
 <img width="1556" height="971" alt="Backstage ADR Screenshot" src="https://github.com/user-attachments/assets/d3d964b1-2bbb-4486-90dc-39608755c75c" />
 
 Further details about the ADR Backstage plugin can be found [here](https://github.com/backstage/community-plugins/tree/main/workspaces/adr/plugins/adr).
+
+### Creating an ADR using the template from within Backstage
+
+An ADR template has been added to the HMCTS instance of Backstage to help teams create ADR's in a consistent manner. To use, go to Create > Create an Architectural Decision Record (ADR) > Choose and then fill in the details to populate the template.
+
+This will automatically create a Pull Request in your repository with the new ADR file in the `docs/adrs` directory. Once merged, it will show automatically in Backstage.
 
 ## Notes
 
