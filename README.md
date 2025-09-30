@@ -152,6 +152,8 @@ An ADR template has been added to the HMCTS instance of Backstage to help teams 
 
 This will automatically create a Pull Request in your repository with the new ADR file in the `docs/adrs` directory. Once merged, it will show automatically in Backstage.
 
+To edit this ADR template, edit the markdown file located in this repository at `templates/adr/skeleton/adr_template.md` in this repository. To change the workflow used to populate this template in Backstage, edit the `templates/adr/template.yaml` file in this repository.
+
 ## Notes
 
 JUnit 5 is enabled by default in the project. Please refrain from using JUnit4 and use the next generation
